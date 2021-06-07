@@ -1,0 +1,47 @@
+\documentclass[10pt, a4paper]{article}
+\title{Fingerprint Presentation Attack Detection using Transferred Knowledge of Common Convolutional Neural Networks}
+\author{Jannik Schleicher}
+\date{}
+
+\usepackage[english,ngerman]{babel}
+
+\usepackage[legalpaper, margin=2.5cm]{geometry}
+
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.statistics}
+\usepackage{tikz-uml}
+
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+
+\usepackage{caption}
+\usepackage{wrapfig}
+\pgfplotsset{MobileNet/.style={
+    width=6cm,
+    height=2.5cm,
+    %
+    % is bar chart
+    xbar=5pt,
+    bar width=6pt,
+    xlabel={time (s)},
+    %
+    % min/max values
+    xmin=0,
+    xmax=20,
+    %
+    % spacing between bars and axis
+    enlarge y limits=0.5,
+    ytick=data,
+    symbolic y coords={
+        {MobileNet}
+    },
+    % number on bars
+    nodes near coords,
+    nodes near coords align={horizontal}
+}}
+
+\begin{document}

@@ -1,0 +1,107 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        width=0.85\linewidth,
+        ytick={1,2,3,4,5,6,7,8,9},
+        yticklabels={efficientnet\_b0, efficientnet\_b5, inception\_v3, mobilenet, nasnet\_large, nasnet\_mobile, vgg16, vgg19, xception}]
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.88,
+                lower quartile=0.89,
+                median=0.89,
+                upper quartile=0.88,
+                upper whisker=0.91,
+                average=0.89
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.81,
+                lower quartile=0.90,
+                median=0.88,
+                upper quartile=0.87,
+                upper whisker=0.90,
+                average=0.88
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.83,
+                lower quartile=0.89,
+                median=0.89,
+                upper quartile=0.88,
+                upper whisker=0.89,
+                average=0.88
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.90,
+                lower quartile=0.91,
+                median=0.91,
+                upper quartile=0.91,
+                upper whisker=0.91,
+                average=0.91
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.67,
+                lower quartile=0.78,
+                median=0.73,
+                upper quartile=0.68,
+                upper whisker=0.80,
+                average=0.73
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.66,
+                lower quartile=0.76,
+                median=0.75,
+                upper quartile=0.73,
+                upper whisker=0.77,
+                average=0.74
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.87,
+                lower quartile=0.89,
+                median=0.88,
+                upper quartile=0.87,
+                upper whisker=0.89,
+                average=0.88
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.88,
+                lower quartile=0.90,
+                median=0.89,
+                upper quartile=0.88,
+                upper whisker=0.90,
+                average=0.89
+            }
+        ] coordinates {};
+        
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=0.86,
+                lower quartile=0.88,
+                median=0.87,
+                upper quartile=0.87,
+                upper whisker=0.89,
+                average=0.88
+            }
+        ] coordinates {};
+        
+    \end{axis}
+\end{tikzpicture}

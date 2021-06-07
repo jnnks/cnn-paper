@@ -1,0 +1,2 @@
+FROM jnnksdev/tectonic:latest
+

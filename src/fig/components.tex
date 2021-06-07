@@ -1,0 +1,15 @@
+\begin{tikzpicture} 
+    \begin{umlcomponent}[x=-3,y=0]{Keras} \end{umlcomponent}
+    \begin{umlcomponent}[x=3,y=0]{TensorFlow} \end{umlcomponent}
+
+    \umlassemblyconnector[interface=Low Level API]{Keras}{TensorFlow}
+
+    \begin{umlcomponent}[x=2,y=-3]{cnnpad}
+        \umlsimpleclass{CnnWrapper}
+    \end{umlcomponent}
+    
+    \umlVHVassemblyconnector[interface=CNN Model Abstractions]{cnnpad}{Keras}
+
+
+    \umlprovidedinterface[interface=CLI,distance=3cm, with port]{cnnpad}
+\end{tikzpicture}

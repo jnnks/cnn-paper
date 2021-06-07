@@ -1,0 +1,18 @@
+{
+	"name": "bio-sfa",
+	"build": {
+		"dockerfile": "Dockerfile",
+	},
+
+	"extensions": [
+		"ban.spellright",
+		"bungcip.better-toml",
+		"efoerster.texlab",
+		"tomoki1207.pdf"
+	],
+	
+	"runArgs": [
+		// local cache directory for tectonic
+		"--volume", "${localWorkspaceFolder}/.cache:/root/.cache/Tectonic"
+	],
+}

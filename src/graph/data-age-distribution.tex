@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        height=25mm,
+        width=95mm,
+        yticklabels={},
+        xtick={21, 25, 31.3, 40, 77},
+        xticklabels={21, 25, 31.3, 40, 77}]
+
+        \addplot+ [
+            boxplot prepared={
+                lower whisker=19.0, 
+                lower quartile=21.0,                
+                median=25.0,
+                upper quartile=40.0,
+                upper whisker=77.0,
+                average=31.3
+            }
+        ] coordinates {};
+    \end{axis}
+\end{tikzpicture}%
+\vspace{-4mm}
+\caption{Figure: Age Distribution}
+\label{img:age-dist}

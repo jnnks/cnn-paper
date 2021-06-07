@@ -1,0 +1,7 @@
+[doc]
+name = 'term_paper'
+bundle = 'https://ttassets.z13.web.core.windows.net/tlextras-2020.0r0.tar'
+
+[[output]]
+name = 'biometrics_term_paper'
+type = 'pdf'
