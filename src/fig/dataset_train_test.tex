@@ -1,0 +1,24 @@
+
+    \begin{tikzpicture}
+        \begin{axis}[
+            xbar stacked, xmin=0, xmax=4000,
+            width=8cm,height=2.6cm,
+            bar width=2mm,
+            xtick={1000,2000,3000,4000},
+            xticklabels={1000, 2000, 3000, 4000},
+            symbolic y coords={Training,Testing},
+            ytick=data,enlarge y limits={abs=3mm},
+            legend style={
+                at={(-0.25,-0.6)},
+                anchor=west,
+            }
+        ]
+            \addplot coordinates { (1000,{Training}) (1700,{Testing})};
+            \addplot coordinates { (1200,{Training}) (2040,{Testing})};
+            \legend{Bona Fide, Fake}
+        \end{axis}
+    \end{tikzpicture}
+
+\vspace{-8mm}
+\caption{Fingerprint Image Count}
+\label{fig:dataset}

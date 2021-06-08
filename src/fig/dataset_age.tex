@@ -8,6 +8,8 @@
 
         \addplot+ [
             boxplot prepared={
+                box extend=0.6,
+                whisker extend=1,
                 lower whisker=19.0, 
                 lower quartile=21.0,                
                 median=25.0,
@@ -17,7 +19,7 @@
             }
         ] coordinates {};
     \end{axis}
-\end{tikzpicture}%
-\vspace{-4mm}
-\caption{Figure: Age Distribution}
+\end{tikzpicture}
+\vspace{-2mm}
+\caption{Age Distribution}
 \label{img:age-dist}

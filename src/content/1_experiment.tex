@@ -1,0 +1,249 @@
+
+\section{Experiment}
+\subsection{Phase 1 - Training}
+
+Each network was trained ten times over the course of multiple hours resulting in a representatively distributed set of trained networks.
+
+\begin{wrapfigure}[10]{r}{10cm}
+    \vspace{-10mm} 
+    \input{graph/training-times}
+    \vspace{2mm}
+    Workstation: Ryzen 2700x (8/16 Cores), 16Gb RAM, GTX 1060 6Gb, TensorFlow Compute Capability: 6.1
+\end{wrapfigure}
+\smallskip\noindent
+The earliest insight is that light-weight, small networks are up to par with bigger, much more complex implementations and that the additional depth of networks like VGG16 is not beneficial for rather simple classifications like presentation attack detection.
+
+\noindent
+Surprisingly the most complex network NasNet Large, which also took the longest to train scored the second worst in respect of the median validation accuracy.
+
+\noindent
+After the training phase the best-case networks were identified using the average validation accuracy.
+The weights for each node are persisted and can be downloaded and applied to reproduce the predictions.
+All following analysis will feature these persisted models.
+
+
+\subsection{Phase 2 - Validation}
+Serialized models are loaded and the validation dataset will be interpreted once again while capturing confidence values for further analysis.
+The detection error trade-off curve confirms that none of the networks have a clear advantage compared to each other, but shows that NasNet Large and NasNet Mobile performed the worst with an average difference of TBD \% and TBD \% respectively.
+
+\noindent
+\begin{minipage}{0.5\textwidth}
+    \input{graph/validation-accuracy.tex}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+    \includegraphics[width=\linewidth]{det-all.jpg}
+\end{minipage}
+
+
+\smallskip\noindent
+In the following subsections each network will be inspected individually by evaluating the performance implicitly assuming a neutral FNMR and FMR rate balancing false positives and false negatives.
+This allows the performance to be differentiated in terms of certain materials.
+
+
+\bigskip
+\subsection{MobileNet}
+\begin{minipage}[c]{0.7\textwidth}
+    Bona fide fingerprints were correctly detected with an accuracy of 89.1\%, while presentation attacks were detected correctly with 93.19\%.
+    None of the materials show significant variance from each other and are withing a range of 92.0\% and 94.7\%.
+    Liquid Ecoflex shows the worst deception potential.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR     & CNMR          & FNMR                 & FMR    \\
+        89.11\% & 93.19\%       & 6.81\%               & 10.89\% \\
+    \end{tabular} \hspace{2mm} Accuracy: 91.33\%
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-mobilenet.tex}
+\end{minipage}
+
+
+\bigskip
+\subsection{Nasnet Mobile}
+\begin{minipage}[c]{0.7\textwidth}
+
+    With a CMR of 81.2\% Nasnet Mobile is the worst performer in the small network group.
+    The presentation attack detection for the Latex datasets was with only 63\% slightly better than randomly assigned outcomes.
+    A low precision in regards to the materials provide an interesting difference of over 20\% accuracy between Latex and Liquid Ecoflex.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR     & CNMR          & FNMR                 & FMR     \\
+        81.22\% & 73.97\%       & 26.03\%              & 18.78\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 77.27\%
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-nasnet-mobile.tex}
+\end{minipage}
+
+
+
+\bigskip
+\subsection{EfficientNet B0}
+\begin{minipage}[c]{0.7\textwidth}
+
+    The only CMR over 90\% is achieved by EfficientNet B0 which is the second best performer over all.
+    Bona fide fingerprints were correctly detected with an accuracy of 92.5\%.
+    
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR     & CNMR          & FNMR                 & FMR     \\
+        92.53\% & 88.92\%       & 11.08\%              & 6.23\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 90.56\%
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-efficientnetb0.tex}
+\end{minipage}
+
+\medskip\noindent
+
+
+\bigskip\bigskip\noindent
+Out of the three tested neural networks MobileNet was performing the best on average thanks to it's high true negative detection rate.
+The other two networks however have a better true positive rate.
+\bigskip\hrule\bigskip
+
+
+\subsection{Xception}
+\begin{minipage}[c]{0.7\textwidth}
+    Presentation attack were able to be detected precicely with a max delta of 2.9\% and all accuracies are over 90\%.
+    The overall perfoamnce is nothing outstanidng and is in line with the median.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR       & CNMR      & FNMR     & FMR     \\
+        86.64\%   & 91.47\%   & 8.53\%   & 13.36\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 89.28\%
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-xception.tex}
+\end{minipage}
+
+
+\medskip\noindent
+
+
+\bigskip
+\subsection{Inception V3}
+\begin{minipage}[c]{0.7\textwidth}
+
+    The performance is very similar to the previous network with the accuracies differing by only 0.08\%.
+    Inception V3s bona fide detection is a little better, but in turn resentation attacks a bit worse in comparison.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR       & CNMR      & FNMR     & FMR     \\
+        87.76\%   & 90.69\%   & 9.31\%   & 12.24\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 89.36\%
+
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+
+    \centering
+    \input{tbl/validation-inception-v3.tex}
+
+\end{minipage}
+
+
+
+\bigskip
+\subsection{EfficientNet B5}
+
+\begin{minipage}[c]{0.7\textwidth}
+
+    The highest correct non-match rate in the entire series is held by EfficientNet B5 with 96.03\% which is up to par with specialized solutions (cite livdet2017, p7).
+    EfficientNet B5 is the best performer on average in the medium size category but the other two networks are very close in accuracy.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR       & CNMR      & FNMR     & FMR     \\
+        82.70\%   & 96.03\%   & 3.97\%   & 17.30\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 89.97\%
+
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-efficientnet-b5.tex}
+\end{minipage}
+
+
+\bigskip\noindent
+Networks in the midrange size deliver as strong performance and are precise in their accuracies.
+EﬀicientNet B5 has the second best accuracy as well as the best CNMR.
+
+\bigskip\hrule\bigskip
+
+
+\subsection{NASNet Large}
+
+\begin{minipage}[c]{0.7\textwidth}
+    More than a fifth of all predictions were incorrect which makes NASNet Large not suitable to enhance the quality of fingerprint presentation attack detection mechanisms.
+    With almost 18.2\% of difference between Latex and Liquid Ecoflex, the precision is the worst among all tested networks.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR       & CNMR      & FNMR     & FMR     \\
+        80.11\%   & 79.41\%   & 20.59\%  & 19.89\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 79.73\%
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-nasnet-large.tex}
+\end{minipage}
+
+
+\bigskip
+\subsection{VGG16}
+\begin{minipage}[c]{0.7\textwidth}
+    The second largest network in this test did not deliver any outstanding data.
+    Accuracy and precision are certainly respectable and in the better half of all tested networks, but unremarkable considering the size and prediction latency.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR       & CNMR      & FNMR     & FMR     \\
+        87.88\%   & 90.29\%   & 9.71\%   & 12.12\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 89.19\%
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-vgg16.tex}
+\end{minipage}
+
+
+
+\bigskip
+\subsection{VGG19}
+
+\begin{minipage}[c]{0.7\textwidth}
+    The largest network provides solid non-match recognition, but cannot provice a good accuracy.
+    A CNMR of almost 94\% is the second highest score comparable to algorithms which were handed in for LivDet2017.
+
+    \medskip\noindent\centering Match Rates: 
+    \begin{tabular}{ r  r  r  r |}
+        CMR       & CNMR      & FNMR     & FMR     \\
+        86.93\%   & 93.38\%   & 6.62\%   & 13.07\%  \\
+    \end{tabular} \hspace{2mm} Accuracy: 90.45\%
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.3\textwidth}
+    \centering
+    \input{tbl/validation-vgg19.tex}
+\end{minipage}
+
+
+\bigskip\noindent
+Especially with regards to NASNet Large, the additional size seems to provide no benefit to fingerprint presentation attack-detection mechanisms.
+For NASNet Large in particular, the additional size does not provide any benefit to fingerprint presentation attack-detection mechanisms.
+VGG16 and VGG18 ware both marginally better than the average network and did not deliver the expected accuracy or precision.
