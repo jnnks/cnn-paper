@@ -15,4 +15,5 @@
 		// local cache directory for tectonic
 		"--volume", "${localWorkspaceFolder}/.cache:/root/.cache/Tectonic"
 	],
+	"remoteUser": "user"
 }

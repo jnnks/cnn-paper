@@ -1,2 +1,3 @@
-FROM jnnksdev/tectonic:latest
+FROM jnnksdev/devcontainer_tectonic:latest
 
+USER $USERNAME
