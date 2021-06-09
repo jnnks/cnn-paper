@@ -1,14 +1,25 @@
-\documentclass[10pt, a4paper]{article}
+\documentclass[english]{.lni/lni}
+
+\usepackage{fancyhdr}
+\usepackage[figurename=Fig., tablename=Tab., small]{caption}[2008/04/01]
+
+\fancypagestyle{titlepage}{
+    \fancyhead[RO]{\small A. Br\"omme, C. Busch, N. Damer, A. Dantcheva, M. Gomez-Barrero, K. Raja, \linebreak C. Rathgeb, A. Sequeira, and A. Uhl (Eds.): BIOSIG 2021, \linebreak Lecture Notes in Informatics (LNI), Gesellschaft f\"ur Informatik, Bonn 2021  \hspace{25pt} } % do NOT modify these lines
+    \fancyfoot{}
+}
+
+%Beginning of page count for this paper
+\setcounter{page}{1}
+
+%head line settings
+\pagestyle{fancy}
+\fancyhead{} \fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt} %horizontal line below header
+\setcounter{footnote}{0}
+
+\author{Jannik Schleicher\footnote{stjischl@h-da.de}}
 \title{Fingerprint Presentation Attack Detection using Transferred Knowledge of Common Convolutional Neural Networks}
-\author{Jannik Schleicher}
-\date{}
-
-\usepackage[english,ngerman]{babel}
-
-\usepackage[legalpaper, margin=2.5cm]{geometry}
-
-\usepackage{caption}
-\captionsetup[figure]{labelformat=empty}
+\date{15.06.2021}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -45,3 +56,17 @@
 }}
 
 \begin{document}
+
+\maketitle
+
+\renewcommand{\refname}{References}
+\setcounter{footnote}{2} %Change to the number of authors for a correct numbering of the foot notes
+\thispagestyle{titlepage}
+%header setting after the second page
+\pagestyle{fancy}
+\fancyhead{} % clears header settings
+\fancyhead[RO]{\small Fingerprint Presentation Attack Detection using Machine Learning \hspace{25pt}  \hspace{0.05cm}}
+\fancyhead[LE]{\hspace{0.05cm}\small  \hspace{25pt} Jannik Schleicher}
+\fancyfoot{} % clears all footer settings
+\renewcommand{\headrulewidth}{0.4pt} %line below header
+

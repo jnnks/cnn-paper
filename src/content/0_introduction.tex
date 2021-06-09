@@ -12,30 +12,27 @@ Restricted space and aggressive cost optimization create the need for small capt
 The reduction in capture-device quality naturally comes with a reduction of authentication accuracy.
 Software enhanced authentication systems can deliver impressive results while not requiring complex capture devices.
 
-\medskip
+
+
 \subsection{Neural Networks}
 Open-Source libraries like Keras offer simple interfaces for complicated software frameworks like Tensorflow and provide ready-to-use machine learning implementations.
 A selection of pre-trained convolutional neural networks was used to conduct the following experiments.
 
-\medskip\noindent
 Spacial diversity was a category for selecting the algorithms to provide an insight on how complicated a deep-learning network needs to be in order to provide confident decisions on whether a presented fingerprint image is coming from a live person or not.
 It is important to note that these networks were meant to be image classifiers detecting the image's contents.
 The classifier MobileNet for example, can detect real world objects and animals and is intended for "mobile and embedded vision applications" (cite MobileNets).
 
-\begin{wrapfigure}[13]{r}{7cm}
-    \input{tbl/neuralnetworks}
-    \label{tbl:nerual_networks}
-\end{wrapfigure}
-\noindent
+
+\input{tbl/neuralnetworks}
+
+
 A total of nine different neural networks were categorized by their size and depth into three groups (see Table \ref{tbl:nerual_networks}).
 Each network was custom fitted into the task at hand with wrapper-layer encapsulating the original behavior in a non-intrusive way to ensure that the default behavior is sustained.
 
-\smallskip\noindent
 The original input layer was discarded and replaced with a generic Input Layer accepting images of size 250x250. All models share the same input layer implementation.
 Furthermore, two additional layers were added to the other end of the stack to flatten the neural network's output and to result in a liveliness score between $0$ and $1$.
 Sigmoid is used as the activation function.
 
-\noindent
 Each neural networks internal behavior is treated like a black box.
 
 
@@ -43,72 +40,46 @@ Each neural networks internal behavior is treated like a black box.
 \subsection{Dataset}
 The provided fingerprint samples were originally used as input material for a conference and competition about fingerprint detection. Various materials were used to present a print resembling a finger.
 
-\begin{wrapfigure}[6]{r}{0.55\textwidth}
-    \vspace{-5mm}    
-    \input{fig/dataset_train_test.tex}
-\end{wrapfigure}
 
-\noindent
+\input{fig/dataset_train_test.tex}
+
+
 Usually training and validating data are split differently and with relations almost flipped as compared to the dataset provided for LivDet2017 participants.
 A train/test split of about 2:1 is often recommended.
 Machine learning algorithms get more accurate the more unique data for testing purposes is provided.
 Therefore the lack of training data will prove to be an additional challenge.
 
-\begin{wrapfigure}[7]{r}{0.50\textwidth}
-    \vspace{-5mm}
-    \input{tbl/dataset}
-\end{wrapfigure}
 
-\smallskip\noindent
+\input{tbl/dataset}
+
+
 About half (45\%) of both datasets are bona fide fingerprints which leaves the other half comprised of materials emulating human skin.
 Different materials were used to train and to validate the neural networks.
 Body Double Ecoflex and Wood Glue (each 18\%) were use to train and Gelatine, Latex and Liquid Ecoflex (also each 18\%) are used for validation.
 59\% of fingerprint samples are from female subject while 41\% are from males.
 Each image was also classified with an age as well.
 
-\begin{wrapfigure}[10]{r}{0.5\textwidth}
-    \vspace{-5mm}
-    \input{fig/dataset_sex}
-    \vspace{2mm}\hrule\vspace{2mm}
-    \input{fig/dataset_age}
 
-\end{wrapfigure}%
+\input{fig/dataset_sex}
+\input{fig/dataset_age}
 
-\medskip\noindent
+
 No recognizable variance in prediction accuracy is expected as the diffrence in sex and age do not infer a significant change in fingerprint anatomy or appearance to play a role in this experiment.
 With that said, a more mature finger can have noticable damage like scars or common wear from labor and general use.
 
-\begin{wrapfigure}[9]{r}{0.35\textwidth}
-    \vspace{-10mm}
-    \begin{minipage}[r]{0.15\textwidth}
-        \includegraphics[width=\linewidth]{live.bmp}
-        \caption{Bona Fide Fingerprint}\label{fig:finger-live}
-    \end{minipage}
-    \begin{minipage}[r]{0.15\textwidth}
-        \includegraphics[trim=32 32 32 32,clip,width=\linewidth]{live.bmp}
-        \caption{Sweat Glands}\label{fig:sweat-glands}
-    \end{minipage}
-\end{wrapfigure}%
-
-\medskip\noindent
 All images were captured on a Green Bit DactyScan84C and have a resolution of 500x500 pixel.
 The scanner is a standalone high-end device able to capture the fingerprints in high resolution and keeping important details intact.
 Bona fide fingerprint images are of such high quality that sweat glands are visible as small white spots on fingerprint ridges in some samples as illustrated in Figure \ref{fig:sweat-glands}.
 
-\medskip\noindent
 Training and validation datasets use different materials to fake a fingerprint which adds a level of unpredictablity to the experiment.
 Important to note is that none of the used material groups share a distinct property or feature which would make it easier for the trained algorithms to infer the artificiality of unknown materials.
 
-\medskip\noindent
 Below is a fingerprint image from each material group.
 None of the materials capture sweat glands which my be beneificial to determince whether the presented image is a presentation attack or genuine.
 
-\begin{figure}[!htb]
-    \input{fig/fake_fingers}
-\end{figure}
 
+\input{fig/fake_fingers}
 
-\newpage
 
 
 \subsection{Data Acquisition}
@@ -124,7 +95,6 @@ Another set of scripts reevaluates best-case trained models and refines the data
 
 
 
-
 \subsection{Methodology}
 The experiment is split into two parts.
 During the first phase the best-case (highest average validation accuracy) for each network needs to be determined.
@@ -135,14 +105,10 @@ Models are trained using the provided training dataset over four epochs, which d
 
 A total of ten trainings for each network will be used as a pool to pick the best performing model.
 
-\noindent
 Trained models are not volatile and can be loaded from disk at any time, so using the best case for each is the fairest approach to make sure every network has the best chances.
 
-
-\medskip\noindent
 Further experiments are conducted in the second phase where the best-case models for each network predicts whether a fingerprint presentation is bona fide or an artificially constructed fingerprint replica.
 Unlike neural network training, the predictions of the trained model are static and will not change.
 The resulting predictions are used to analyze possible correlations between input data and predicted values.
 
 Just like the original paper about the LiveDet2017 competition, the predictions of each algorithm will be classified by assuming that prediction values of at least 0.50 (cite LiveDet2017) suggest a bona fide fingerprint while all lower values suggest a presentation attack.
-
