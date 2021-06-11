@@ -1,31 +1,32 @@
 \begin{table}[htb]
     \centering
 
-    \begin{minipage}[r]{0.25\textwidth}
-        \centering Training Data (37\%)
+    \begin{minipage}[r]{0.45\textwidth}
+        \centering Training Data (37\%, 2200 images) 
         
         \smallskip
-        \begin{tabular}{ l r } \hline
-            Material    & Share \\ \hline
-            Live        & 45\%  \\
-            Body Double & 18\%  \\
-            Ecoflex     & 18\%  \\
-            Wood Glue   & 18\%  \\ \hline
+        \begin{tabular}{ l  r  r} \hline
+            Material    & Count & Share \\ \hline
+            Live        &  1000 &  45\% \\
+            Body Double &   400 &  18\% \\
+            Ecoflex     &   400 &  18\% \\
+            Wood Glue   &   400 &  18\% \\ \hline
         \end{tabular}
     \end{minipage}
-    \hspace{10mm}
-    \begin{minipage}[r]{0.25\textwidth}
-        \centering Testing Data (63\%)
+    \hfill
+    \begin{minipage}[r]{0.45\textwidth}
+        \centering Testing Data (63\%, 3740 images)
         
         \smallskip
-        \begin{tabular}{ l r } \hline
-            Material        & Share \\ \hline
-            Live            & 45\%  \\
-            Gelatine        & 18\%  \\
-            Latex           & 18\%  \\
-            Liquid Ecoflex  & 18\%  \\ \hline
+        \begin{tabular}{ l  r  r } \hline
+            Material        & Count & Share \\ \hline
+            Live            &  1700 & 45\%  \\
+            Gelatine        &   680 & 18\%  \\
+            Latex           &   680 & 18\%  \\
+            Liquid Ecoflex  &   680 & 18\%  \\ \hline
         \end{tabular}
     \end{minipage}
 
     \caption{Material Distribution}
+    \label{tbl:dataset_materials}
 \end{table}

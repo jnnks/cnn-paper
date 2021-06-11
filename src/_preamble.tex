@@ -54,11 +54,18 @@
     nodes near coords align={horizontal}
 }}
 
-\begin{document}
+\usepackage[acronym,symbols]{glossaries}
+\makenoidxglossaries
+\input{glossary.tex}
 
+\usepackage[
+    backend=biber
+]{biblatex}
+\addbibresource{term_paper.bib}
+
+\begin{document}
 \maketitle
 
-\renewcommand{\refname}{References}
 \setcounter{footnote}{2} %Change to the number of authors for a correct numbering of the foot notes
 \thispagestyle{titlepage}
 %header setting after the second page

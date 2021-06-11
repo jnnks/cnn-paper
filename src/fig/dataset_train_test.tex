@@ -7,15 +7,15 @@
             bar width=2mm,
             xtick={1000,2000,3000,4000},
             xticklabels={1000, 2000, 3000, 4000},
-            symbolic y coords={Training,Testing},
+            symbolic y coords={Training,Validation},
             ytick=data,enlarge y limits={abs=3mm},
             legend style={
-                at={(-0.25,-0.6)},
+                at={(1.05,0.5)},
                 anchor=west,
             }
         ]
-            \addplot coordinates { (1000,{Training}) (1700,{Testing})};
-            \addplot coordinates { (1200,{Training}) (2040,{Testing})};
+            \addplot coordinates { (1000,{Training}) (1700,{Validation})};
+            \addplot coordinates { (1200,{Training}) (2040,{Validation})};
             \legend{Bona Fide, Fake}
         \end{axis}
     \end{tikzpicture}

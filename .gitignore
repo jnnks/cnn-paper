@@ -1,2 +1,8 @@
 .cache
 build
+
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.run.xml

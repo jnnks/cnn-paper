@@ -1,5 +1,8 @@
 {
     "texlab.build.executable": "tectonic",
     "texlab.build.args": [ "-X", "build", ],
-    "texlab.build.onSave": true
+    "texlab.build.onSave": true,
+    
+    "editor.wordWrapColumn": 120,
+    "editor.wordWrap": "bounded"
 }
