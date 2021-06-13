@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=0.8\linewidth, height=50mm,
+    ymax=270,
+    ytick=\empty,
+    bar width=2mm,
+    ymajorgrids,
+    ylabel={Average Training Time (s)},
+    extra y ticks={30, 60, 90, 120, 180, 240},    
+    xtick=data,
+    symbolic x coords={efficientnet, inceptionresnetv2, mobilenet, mobilenetv2, mobilenetv3, nasnetlarge, nasnetmobile, resnetv2, vgg16, vgg19, xception},
+    nodes near coords,
+    nodes near coords style={/pgf/number format/.cd,precision=0},
+    x tick label style={rotate=-45,anchor=west}
+    ]
+    \addplot table [y={avg_tme}]{\trainingtable};
+\end{axis}
+\end{tikzpicture}

@@ -3,14 +3,24 @@
 \subsection{Phase 1 - Training}
 
 Each network was trained ten times over the course of multiple hours resulting in a representatively distributed set of trained networks.
-
+Figure \ref{fig:training_times} visualizes the relations between the average training times.
 
 \input{fig/training_times}
-    
 
-The earliest insight is that light-weight, small networks are up to par with bigger, much more complex implementations and that the additional depth of networks like VGG16 is not beneficial for rather simple classifications like presentation attack detection.
+No direct corellation between parameter count and training time can be determined.
+NasNet Large takes by far the longest to train with an average of approximately 3.5 minutes. 
+MobileNet was the fastest to train with slightly under 30 seconds.
 
-Surprisingly the most complex network NasNet Large, which also took the longest to train scored the second worst in respect of the median validation accuracy.
+
+\input{fig/validation_accuracies}
+
+
+The earliest insight is that light-weight, small networks are up to par with bigger, much more complex implementations in the context of this experiment.
+An additional amount of parameters does not seem to contriute to an increase in prediction accuracy for binary classifications like presentation attack detection.
+Even smaller networks can get the same or a better average validation accuracy.
+
+Inception Resnet V2 has a high accuracy fluctuation between training sessions which could not be attributed to any superficial property and the reason behind it is unclear.
+On average the aformentioned network performed the worst, while being the second largest.
 
 After the training phase the best-case networks were identified using the average validation accuracy.
 The weights for each node are persisted and can be downloaded and applied to reproduce the predictions.
@@ -22,12 +32,9 @@ Serialized models are loaded and the validation dataset will be interpreted once
 The detection error trade-off curve confirms that none of the networks have a clear advantage compared to each other, but shows that NasNet Large and NasNet Mobile performed the worst with an average difference of TBD \% and TBD \% respectively.
 
 
-\begin{minipage}{0.5\textwidth}
-    \input{fig/graph/validation-accuracy.tex}
-\end{minipage}%
-\begin{minipage}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{det-all.jpg}
-\end{minipage}
+
+\includegraphics[width=\linewidth]{det-all.jpg}
+
 
 In the following subsections each network will be inspected individually by evaluating the performance implicitly assuming a neutral FNMR and FMR rate balancing false positives and false negatives.
 This allows the performance to be differentiated in terms of certain materials.

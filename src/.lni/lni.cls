@@ -77,8 +77,8 @@
   \fi}
   
 \frenchspacing    % Abstand nach Satzende
-\widowpenalty=10000   % Vermeidet "widows & orphans"
-\clubpenalty=10000
+% \widowpenalty=10000   % Vermeidet "widows & orphans"
+% \clubpenalty=10000
 
 
 % Times als Grundschrift
