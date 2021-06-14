@@ -1,9 +1,10 @@
 \begin{tikzpicture}
 \begin{axis}[
     ymode=log,
+    width=0.7\linewidth, height=50mm,
     log basis y=10,
     grid=major,
-    boxplot/draw direction=y, width=0.8\linewidth, height=5cm, 
+    boxplot/draw direction=y,
     scale only axis,            
     legend style={
         at={(1.00,0.5)},
@@ -20,12 +21,12 @@
         grid=major,
         tick label style={rotate=-45,anchor=west}}]
 
-        \pgfplotstablegetrowsof{\trainingtable}
+        \pgfplotstablegetrowsof{\frozentrainingtable}
         \pgfmathtruncatemacro\TotalRows{\pgfplotsretval-1}
         \pgfplotsinvokeforeach{0,...,\TotalRows}{
             \addplot+[
             boxplot prepared from table={
-                table=\trainingtable,
+                table=\frozentrainingtable,
                 row=#1,
                 lower whisker=min_acc,
                 upper whisker=max_acc,

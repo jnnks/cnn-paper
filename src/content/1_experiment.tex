@@ -1,31 +1,62 @@
 
 \section{Experiment}
-\subsection{Phase 1 - Training}
+\subsection{Phase 1.1 - Frozen Training}
 
-Each network was trained ten times over the course of multiple hours resulting in a representatively distributed set of trained networks.
-Figure \ref{fig:training_times} visualizes the relations between the average training times.
+Each network was trained ten times over the course of three hours resulting in a representatively distributed set of trained networks.
+Figure \ref{fig:frozen_training_times} visualizes the relations between the average training times.
 
-\input{fig/training_times}
+\input{fig/frozen_training_times}
 
-No direct corellation between parameter count and training time can be determined.
+No linear relation between parameter count and training time can be determined.
 NasNet Large takes by far the longest to train with an average of approximately 3.5 minutes. 
 MobileNet was the fastest to train with slightly under 30 seconds.
 
 
-\input{fig/validation_accuracies}
+\input{fig/frozen_validation_accuracies}
 
 
+Many networks hover around 90\% validation accuracy for their best case.
 The earliest insight is that light-weight, small networks are up to par with bigger, much more complex implementations in the context of this experiment.
-An additional amount of parameters does not seem to contriute to an increase in prediction accuracy for binary classifications like presentation attack detection.
+An additional amount of parameters does not seem to contribute to an increase in prediction accuracy for binary classifications like presentation attack detection.
 Even smaller networks can get the same or a better average validation accuracy.
 
 Inception Resnet V2 has a high accuracy fluctuation between training sessions which could not be attributed to any superficial property and the reason behind it is unclear.
-On average the aformentioned network performed the worst, while being the second largest.
+On average the aforementioned network performed the worst while being the second largest.
 
-After the training phase the best-case networks were identified using the average validation accuracy.
+After the training phase, the best-case networks were identified using the average validation accuracy.
 The weights for each node are persisted and can be downloaded and applied to reproduce the predictions.
-All following analysis will feature these persisted models.
+The following analysis will feature these persisted models.
 
+
+\subsection{Phase 1.2 - All Layers Enabled Training}
+All networks are trained again with the same configuration, but now all layers are able to adapt their parameters.
+Immediately noticeable is the drastic increase in training time for each network.
+Another important fact is the increase in resource consumption of unfrozen layers during the training phase.
+The workstation was now crashing multiple times during training iterations with variations of out-of-memory exceptions.
+Figure \ref{fig:liquid_training_times} visualizes the relations between the average training times once again.
+
+
+\input{fig/liquid_training_times}
+
+
+NasNet Larges training time increased tenfold and it takes almost 40 minutes on average.
+
+
+\input{fig/liquid_validation_accuracies}
+
+
+The increased time spent for a more thorough training phase was worth it as almost all networks now break the 90\% validation accuracy barrier.
+Inception Resnet V2 delivers a respectable top accuracy after the disappointing result in the last section.
+
+
+\input{tbl/training_diff}
+
+
+Table \ref{tbl:training_diff} shows the relative gain in validation accuracy of frozen versus freely trained networks.
+Many of the smaller networks do not gain much, but on the other hand Inception Resnet V2 and Xception are now much more competitive.
+Xceptions best validation accuracy is competitive and comprabale with some of the algorithms handed in during the LivDet2017 competition at least in regards to the dataset this experiment uses. \cite{LIVDET}
+
+\hfill
 
 \subsection{Phase 2 - Validation}
 Serialized models are loaded and the validation dataset will be interpreted once again while capturing confidence values for further analysis.
@@ -36,7 +67,7 @@ The detection error trade-off curve confirms that none of the networks have a cl
 \includegraphics[width=\linewidth]{det-all.jpg}
 
 
-In the following subsections each network will be inspected individually by evaluating the performance implicitly assuming a neutral FNMR and FMR rate balancing false positives and false negatives.
+In the following subsections, each network will be inspected individually by evaluating the performance implicitly assuming a neutral FNMR and FMR rate balancing false positives and false negatives.
 This allows the performance to be differentiated in terms of certain materials.
 
 
@@ -83,22 +114,19 @@ This allows the performance to be differentiated in terms of certain materials.
 
 
 \subsection{EfficientNet B0}
-\begin{minipage}[c]{0.7\textwidth}
 
-    The only CMR over 90\% is achieved by EfficientNet B0 which is the second best performer over all.
-    Bona fide fingerprints were correctly detected with an accuracy of 92.5\%.
+The only CMR over 90\% is achieved by EfficientNet B0 which is the second best performer over all.
+Bona fide fingerprints were correctly detected with an accuracy of 92.5\%.
     
-    \medskip\centering Match Rates: 
-    \begin{tabular}{ r  r  r  r |}
-        CMR     & CNMR          & FNMR                 & FMR     \\
-        92.53\% & 88.92\%       & 11.08\%              & 6.23\%  \\
-    \end{tabular} \hspace{2mm} Accuracy: 90.56\%
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.3\textwidth}
-    \centering
-    \input{tbl/validation-efficientnetb0.tex}
-\end{minipage}
+\input{tbl/efficientnet}
+
+%     \medskip\centering Match Rates: 
+%     \begin{tabular}{ r  r  r  r |}
+%         CMR     & CNMR          & FNMR                 & FMR     \\
+%         92.53\% & 88.92\%       & 11.08\%              & 6.23\%  \\
+%     \end{tabular} \hspace{2mm} Accuracy: 90.56\%
+
+% \hfill
 
 \medskip
 Out of the three tested neural networks MobileNet was performing the best on average thanks to it's high true negative detection rate.

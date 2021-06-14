@@ -92,9 +92,10 @@
 \makeatother
 
 
-% load the data table ...
-\pgfplotstableread[col sep=comma]{data/train_0606.csv}{\trainingtable}
+\pgfplotstableread[col sep=comma]{data/training/frozen.csv}{\frozentrainingtable}
+\pgfplotstableread[col sep=comma]{data/training/liquid.csv}{\liquidtrainingtable}
 
+\usepackage{csvsimple}
 
 \begin{document}
 

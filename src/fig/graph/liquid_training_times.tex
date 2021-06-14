@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    width=0.8\linewidth, height=50mm,
+    ymin=0,ymax=2640,
+    ytick=\empty,
+    bar width=2mm,
+    ymajorgrids,
+    ylabel={Average Training Time (s)},
+    extra y ticks={300, 600, 1200, 1800, 2400},
+    extra y tick labels={5min, 10min, 20min, 30min, 40min},
+    xtick=data,
+    symbolic x coords={efficientnet, inceptionresnetv2, mobilenet, mobilenetv2, mobilenetv3, nasnetlarge, nasnetmobile, resnetv2, vgg16, vgg19, xception},
+    nodes near coords,
+    nodes near coords style={/pgf/number format/.cd,precision=0},
+    x tick label style={rotate=-45,anchor=west}
+    ]
+    \addplot table [y={avg_tme}]{\liquidtrainingtable};
+\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+\begin{axis}[
+    ymode=log,
+    width=0.7\linewidth, height=50mm,
+    log basis y=10,
+    grid=major,
+    boxplot/draw direction=y,
+    scale only axis,            
+    legend style={
+        at={(1.00,0.5)},
+        anchor=west},
+    ytick=\empty,
+    ymax=1,
+    ylabel={Validation Accuracy},
+    extra y ticks={0.25, 0.5, 0.6, 0.7, 0.8, 0.9},
+    extra y tick labels={25\%, 50\%, 60\%, 70\%, 80\%, 90\%},
+    xtick=\empty,
+    extra x ticks={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11},
+    extra x tick labels={efficientnet, inceptionresnetv2, mobilenet, mobilenetv2, mobilenetv3, nasnetlarge, nasnetmobile, resnetv2, vgg16, vgg19, xception},
+    extra x tick style={
+        grid=major,
+        tick label style={rotate=-45,anchor=west}}]
+
+        \pgfplotstablegetrowsof{\liquidtrainingtable}
+        \pgfmathtruncatemacro\TotalRows{\pgfplotsretval-1}
+        \pgfplotsinvokeforeach{0,...,\TotalRows}{
+            \addplot+[
+            boxplot prepared from table={
+                table=\liquidtrainingtable,
+                row=#1,
+                lower whisker=min_acc,
+                upper whisker=max_acc,
+                average=avg_acc
+            },
+            boxplot prepared,
+                % to get a more useful legend
+                area legend
+            ]
+            coordinates {};
+        }
+\end{axis}
+\end{tikzpicture}
