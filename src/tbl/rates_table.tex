@@ -4,8 +4,8 @@
         \phantom{X} & Frozen \\\hline
         \csvreader[head to column names,
                     filter=\equal{\network}{#1}]{data/prediction/frozen.csv}{}{             
-        CMR & \cmr  \\
-        CNMR & \cnmr  } \\\hline
+        CMR & \cmr \% \\
+        CNMR & \cnmr \%} \\\hline
     \end{tabular}
     \hspace{-3mm}
     \begin{tabular}{ r }
@@ -13,8 +13,8 @@
         Liquid \\ \hline
         \csvreader[head to column names,
                     filter=\equal{\network}{#1}]{data/prediction/liquid.csv}{}{
-        \cmr \\ 
-        \cnmr } \\\hline
+        \cmr \% \\ 
+        \cnmr \%} \\\hline
     \end{tabular}
 }
 
