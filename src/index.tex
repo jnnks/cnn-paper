@@ -1,4 +1,4 @@
-% \maketitle
+
 \begin{center}
 \huge Work in Progress
 \end{center}
@@ -8,15 +8,19 @@ Convolutional Neural Networks can be repurposed from their original use case to 
 This paper explores various options of publicly available machine learning algorithms and transfers their image classifications to differentiate between bona fide and artificial fingerprints.
 All networks have their liveliness detection potential evaluated without intrusive modification and after minimal training.
 
-\smallskip
 Datasets from the Liveness Detection Competition 2017 were used as training and validation input to give context to the research and compare the results to specialized solutions.
 \end{abstract}
 
 
-% \begin{keywords}
-% Convolutional Neural Networks, Fingerprint Presentation Attack Detection
-% \end{keywords}
+\begin{keywords}
+Convolutional Neural Networks, Fingerprint Presentation Attack Detection
+\end{keywords}
 
+
+\paragraph{Related Work:}
+This paper references the LivDet 2017 Fingerprint Liveness Detection Competition and the resulting paper with the same name "LivDet 2017 Fingerprint Liveness Detection Competition2017" (Mura et. al.) \cite{LIVDET}.
+Ratios and thresholds are set with the paper in mind, as the same dataset is partially used for this experiment.
+Performances can therefore be compared to the submitted algorithms of this conference.
 
 \input{content/0_introduction.tex}
 \input{content/1_experiment.tex}
