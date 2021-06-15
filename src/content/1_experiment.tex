@@ -17,11 +17,11 @@ MobileNet was the fastest to train with slightly under 30 seconds.
 
 Many networks hover around 90\% validation accuracy for their best case.
 The earliest insight is that light-weight, small networks are up to par with bigger, much more complex implementations in the context of this experiment.
-An additional amount of parameters does not seem to indicate better prediction accuracy for binary classifications.
-Even smaller networks can get the same or a better average validation accuracy.
+An additional number of parameters does not seem to indicate better prediction accuracy for binary classifications.
+Even smaller networks obtain the same or a better average validation accuracy.
 
 InceptionResnetV2 has a high accuracy fluctuation between training sessions which could not be attributed to any superficial property and the reason behind it is unclear.
-On average the aforementioned network performed the worst while being the second largest.
+On average, the aforementioned network performed the worst while being the second largest.
 
 After the training phase, the best-case networks were identified using the average validation accuracy.
 The weights for each node are persisted and can be downloaded and applied to reproduce the predictions.
@@ -32,7 +32,7 @@ The following analysis will feature these persisted models.
 All networks are trained again with the same configuration, but now all layers are able to adapt their parameters.
 Immediately noticeable is the drastic increase in training time for each network.
 Another important fact is the increase in resource consumption of unfrozen layers during the training phase.
-The workstation was crashing multiple times during training iterations with variations of out-of-memory exceptions.
+The training was terminating multiple times during training iterations with variations of out-of-memory exceptions.
 Figure \ref{fig:liquid_training_times} visualizes the relations between the average training times once again.
 
 
@@ -54,7 +54,7 @@ InceptionResnetV2 delivers a respectable top accuracy after the disappointing re
 
 Table \ref{tbl:training_diff} shows the relative gain in validation accuracy of frozen versus freely trained networks.
 Many of the smaller networks do not gain much, but on the other hand, InceptionResnetV2 and Xception are now much more competitive.
-Xceptions best validation accuracy is comprabale with some of the algorithms handed in during the LivDet2017 competition in regards to the dataset this experiment uses. \cite{LIVDET}
+Xceptions best validation accuracy is comparabale with some of the algorithms handed in during the LivDet2017 competition in regards to the dataset this experiment uses. \cite{LIVDET}
 
 \hfill
 
@@ -75,7 +75,7 @@ This allows the performance to be differentiated in terms of certain materials.
 \subsubsection{EfficientNet B0}
 Even before unfreezing all layers EfficientNetB0 was providing a usable PAD detection accuracy.
 Only a small increase in accuracy could be gained by liquid training.
-Interestingly the correct non-match rate increased by almost 6\% while the correct match rate sank slightly.
+Interestingly, the correct non-match rate increased by almost 6\% while the correct match rate sank slightly.
 
 Prediction latencies are consistent, but the few outliers make the average time quite a lot higher than the median latency as seen in Table \ref{tbl:efficientnet_latencies}.
 
@@ -114,7 +114,7 @@ With an average of almost 73ms NasNetLarge has the highest prediction latency.
 
 \subsubsection{Resnet V2}
 Liquid Ecoflex samples were again correctly classified most of the time with a similar rate of 99.1\% after liquid training.
-CMR and CNMR are more balanced and result in an overall better accuracy in comparison to NasNetLarge.
+BPCER and APCER are more balanced and result in an overall better accuracy in comparison to NasNetLarge.
 The average prediction latency is half of NasNetLarges.
 
 \predictiontables{ResNet50V2}
@@ -144,7 +144,7 @@ Presentation attacks were able to be detected precisely with a max delta of unde
 
 \subsubsection{EfficientNet B0}
 
-The only CMR over 90\% is achieved by EfficientNet B0 which is the second best performer over all.
+The only BPCER over 90\% is achieved by EfficientNet B0 which is the second best performer over all.
 Bona fide fingerprints were correctly detected with an accuracy of 92.5\%.
 
 \predictiontables{efficientnet}
@@ -205,7 +205,7 @@ The other two networks however have a better true positive rate.
     EfficientNet B5 is the best performer on average in the medium size category but the other two networks are very close in accuracy.
 
 Networks in the midrange size deliver as strong performance and are precise in their accuracies.
-EﬀicientNet B5 has the second best accuracy as well as the best CNMR.
+EﬀicientNet B5 has the second best accuracy as well as the best APCER.
 
 \bigskip\hrule
 
@@ -217,7 +217,7 @@ EﬀicientNet B5 has the second best accuracy as well as the best CNMR.
 
     \medskip\centering Match Rates: 
     \begin{tabular}{ r  r  r  r |}
-        CMR       & CNMR      & FNMR     & FMR     \\
+        BPCER       & APCER      & FNMR     & FMR     \\
         80.11\%   & 79.41\%   & 20.59\%  & 19.89\%  \\
     \end{tabular} \hspace{2mm} Accuracy: 79.73\%
 \end{minipage}
@@ -236,7 +236,7 @@ EﬀicientNet B5 has the second best accuracy as well as the best CNMR.
 
     \medskip\centering Match Rates: 
     \begin{tabular}{ r  r  r  r |}
-        CMR       & CNMR      & FNMR     & FMR     \\
+        BPCER       & APCER      & FNMR     & FMR     \\
         87.88\%   & 90.29\%   & 9.71\%   & 12.12\%  \\
     \end{tabular} \hspace{2mm} Accuracy: 89.19\%
 \end{minipage}
@@ -251,11 +251,11 @@ EﬀicientNet B5 has the second best accuracy as well as the best CNMR.
 \subsection{VGG19}
 \begin{minipage}[c]{0.7\textwidth}
     The largest network provides solid non-match recognition, but cannot provice a good accuracy.
-    A CNMR of almost 94\% is the second highest score comparable to algorithms which were handed in for LivDet2017.
+    A APCER of almost 94\% is the second highest score comparable to algorithms which were handed in for LivDet2017.
 
     \medskip\centering Match Rates: 
     \begin{tabular}{ r  r  r  r |}
-        CMR       & CNMR      & FNMR     & FMR     \\
+        BPCER       & APCER      & FNMR     & FMR     \\
         86.93\%   & 93.38\%   & 6.62\%   & 13.07\%  \\
     \end{tabular} \hspace{2mm} Accuracy: 90.45\%
 \end{minipage}

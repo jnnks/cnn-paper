@@ -1,4 +1,4 @@
-network,cmr,cnmr,acc,gel,lat,lec,mintime,lqttime,medtime,uqttime,maxtime,firsttime,avgtime
+network,bpcer,apcer,acc,gel,lat,lec,mintime,lqttime,medtime,uqttime,maxtime,firsttime,avgtime
 EfficientNetB0,89.41,96.18,93.10,97.94,95.88,93.82,25.73,32.25,34.26,36.07,326.54,10228.15,37.15
 InceptionResNetV2,96.47,92.55,94.33,91.47,90.88,95.29,50.00,56.45,57.94,59.77,831.74,18525.22,63.33
 MobileNet,94.41,88.97,91.44,83.82,92.35,94.12,22.54,24.22,24.86,27.02,179.75,7727.38,27.90

@@ -13,17 +13,17 @@ Malicious intent is often connected to high-value targets like critical infrastr
 These authentication systems are operating with high accuracy and no tolerance for errors, which requires specialized and costly hardware.
 High-quality fingerprint scanners are challenging to integrate into systems such as smartphones and personal computers, nonetheless representing targets for unauthorized access.
 
-Restricted space and aggressive cost optimization create the need for small capture devices which are easy to use, easy to integrate, and cheap to produce. 
-The reduction in capture-device quality naturally comes with a reduction in authentication accuracy.
+Restricted space and aggressive cost-optimization create the need for small capture devices which are easy to use, easy to integrate, and cheap to produce. 
+The reduction in capture device quality naturally comes with a reduction in authentication accuracy.
 Software-enhanced authentication systems can deliver impressive results while not requiring complex capture devices.
 
 
 
 \subsection{Neural Networks}
 Open-Source libraries such as \gls{keras} offer simple interfaces for complicated software frameworks and provide ready-to-use machine learning implementations.
-Following experiments are conducted using a selection of pre-trained deep learning models from \gls{keras} using \gls{tensorflow} as the underlying platform.
+The following experiments were conducted using a selection of pre-trained deep learning models from \gls{keras} using \gls{tensorflow} as the underlying platform.
 
-Spacial diversity was a category for selecting the algorithms to give insight on how complicated a deep learning network needs to be to provide confident decisions on whether a presented fingerprint image is coming from a live person or not.
+Spacial diversity was a category for selecting the algorithms to give insight into how complicated deep learning networks need to be to provide confident decisions on whether a presented fingerprint image is coming from a live person or not.
 It is important to note that these networks are image classifiers coarsely detecting the image's contents.
 The classifier MobileNet, for example, can detect real-world objects and animals and is intended for "mobile and embedded vision applications" \cite{MBNET}.
 All networks are pre-trained on the ImageNet dataset containing "1000 object classes and [...] 1,281,167 training images" \cite{ImageNet}. 
@@ -90,8 +90,8 @@ The images used in the context of the experiments are only a subset of the datas
 
 
 \subsection{Methodology}
-The experiment is split into two parts.
-During the first phase, the best-case (highest average validation accuracy) for each network is determined.
+The experiment was split into two parts.
+During the first phase, the best-case (highest average validation accuracy) for each network was determined.
 Due to randomized initial values and subsequent variance in training evolution, the resulting validation accuracy can fluctuate to some degree.
 Repetitive training and evaluation will give sets of models for each network that can be serialized and stored.
 
@@ -99,8 +99,8 @@ All model-internal layers are initially frozen to inspect out-of-the-box behavio
 During the second training, all parameters are unfrozen and able to change.
 A comparison between default and more specialized models will give insight into the importance of adaptive training.
 The unfrozen models are expected to perform a lot better.
-In the following sections experiments and datasets labeled as "liquid" refer to models trained with all layers unfrozen.
-The fingerprint dataset contains a material called "Liquiq Ecoflex" which is the exemption of this previous convention.
+In the following sections, experiments and datasets labeled as "liquid" refer to models trained with all layers unfrozen.
+The fingerprint dataset contains a material called "Liquid Ecoflex" which is the exemption of this convention.
 
 Models are compiled with an Adam-Optimizer using a learning rate of 0.0001 and a binary cross-entropy loss function.
 Models are trained using the provided training dataset over ten epochs, which delivered a good balance between validation accuracy and training time.
