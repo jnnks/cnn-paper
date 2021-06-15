@@ -99,6 +99,8 @@ All model-internal layers are initially frozen to inspect out-of-the-box behavio
 During the second training, all parameters are unfrozen and able to change.
 A comparison between default and more specialized models will give insight into the importance of adaptive training.
 The unfrozen models are expected to perform a lot better.
+In the following sections experiments and datasets labeled as "liquid" refer to models trained with all layers unfrozen.
+The fingerprint dataset contains a material called "Liquiq Ecoflex" which is the exemption of this previous convention.
 
 Models are compiled with an Adam-Optimizer using a learning rate of 0.0001 and a binary cross-entropy loss function.
 Models are trained using the provided training dataset over ten epochs, which delivered a good balance between validation accuracy and training time.
