@@ -1,0 +1,23 @@
+
+\csvreader[head to column names,
+            filter=\equal{\network}{mobilenet}]{data/prediction/liquid.csv}{}{
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=40mm, height=50mm,    
+        ytick=\empty,
+        xtick=\empty,
+        extra y ticks={\lqttime, \medtime, \uqttime},
+        grid=major,
+        boxplot/draw direction=y]
+    
+            \addplot+[boxplot prepared={
+                lower whisker=\lqttime,
+                lower quartile=\lqttime,
+                median=\medtime,
+                upper quartile=\uqttime,
+                upper whisker=\lqttime,
+            }] coordinates {};
+            
+    \end{axis}
+    \end{tikzpicture}
+}

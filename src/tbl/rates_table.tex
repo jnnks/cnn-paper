@@ -1,0 +1,20 @@
+\newcommand{\ratestable}[1]{
+    \begin{tabular}{ c  r  r }
+        \hline
+        \phantom{X} & Frozen \\\hline
+        \csvreader[head to column names,
+                    filter=\equal{\network}{#1}]{data/prediction/frozen.csv}{}{             
+        CMR & \cmr  \\
+        CNMR & \cnmr  } \\\hline
+    \end{tabular}
+    \hspace{-3mm}
+    \begin{tabular}{ r }
+        \hline
+        Liquid \\ \hline
+        \csvreader[head to column names,
+                    filter=\equal{\network}{#1}]{data/prediction/liquid.csv}{}{
+        \cmr \\ 
+        \cnmr } \\\hline
+    \end{tabular}
+}
+

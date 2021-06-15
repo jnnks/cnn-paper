@@ -1,0 +1,11 @@
+network,size,parameter
+EfficientNetB0,29,5.330.571
+InceptionResNetV2,215,55.873.736 
+MobileNet,16,4.253.864
+NASNetLarge,343,88.949.818
+ResNet50V2,98,25.613.800
+VGG16,528,138.357.544
+Xception,88,22.910.480
+
+
+EfficientNetB0, InceptionResNetV2, MobileNet, NASNetLarge, ResNet50V2, VGG16, Xception

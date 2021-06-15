@@ -1,0 +1,22 @@
+\newcommand{\predictiontables}[1]{
+    \begin{minipage}[t]{0.5\textwidth} \centering
+        \materialtable{#1}
+
+        \captionof{table}{Validation Accuracies}
+        \label{tbl:#1_materials}
+    \end{minipage}
+    \begin{minipage}[t]{0.5\textwidth} \centering
+
+        \vspace{-12.75mm}
+
+        \ratestable{#1}
+        \captionof{table}{Prediction Rates}
+        \label{tbl:#1_rates}
+        
+        \vspace{5mm}
+
+        \latencytable{#1}
+        \captionof{table}{Prediction Latencies (s)}
+        \label{tbl:#1_latencies}
+    \end{minipage}
+}

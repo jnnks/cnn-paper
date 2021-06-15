@@ -1,0 +1,9 @@
+\newcommand{\latencytable}[1]{
+    \begin{tabular}{ c  c  c  c}
+        \hline
+        25\% Low & Med & Avg & 75\% Low\\\hline
+        \csvreader[head to column names,
+                    filter=\equal{\network}{#1}]{data/prediction/frozen.csv}{}{             
+            \lqttime & \medtime & \avgtime & \uqttime } \\\hline%
+    \end{tabular}
+}

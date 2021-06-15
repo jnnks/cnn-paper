@@ -1,0 +1,26 @@
+\newcommand{\materialtable}[1]{
+    \begin{tabular}{ c  r }
+
+        \hline
+        Material & Frozen \\
+        \hline
+        \csvreader[head to column names,
+                    filter=\equal{\network}{#1}]{data/prediction/frozen.csv}{}{             
+            Live & \acc \\
+            Gelatine & \gel \\
+            Latex & \lat \\
+            Liquid Ecoflex & \lec } \\\hline%
+    \end{tabular}
+    \begin{tabular}{ r }
+
+        \hline
+        Free \\
+        \hline
+        \csvreader[head to column names,
+                    filter=\equal{\network}{#1}]{data/prediction/liquid.csv}{}{             
+            \acc \\
+            \gel \\
+            \lat \\
+            \lec } \\\hline%
+    \end{tabular}
+}

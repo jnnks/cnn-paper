@@ -1,18 +1,14 @@
 \begin{table}[htb]
     \centering
-    \begin{tabular}[htb]{ l  r  r }
+
+    \begin{tabular}{ l  r  r }
         \hline
-        Network Name   & Size    & Parameters  \\\hline
-        MobileNet      & 16 MB   &   4,253,864 \\
-        NASNetMobile   & 23 MB   &   5,326,716 \\
-        EfficientNetB0 & 29 MB   &   5,330,571 \\
-        Xception       & 88 MB   &  22,910,480 \\
-        InceptionV3    & 92 MB   &  23,851,784 \\
-        EfficientNetB5 & 118 MB  &  30,562,527 \\
-        NASNetLarge    & 343 MB  &  88,949,818 \\
-        VGG16          & 528 MB  & 138,357,544 \\
-        VGG19          & 549 MB  & 143,667,240 \\\hline
+        Network Name & Size (Mb) & Parameter Count
+        \\\hline
+        \csvreader[head to column names]{data/networks.csv}{}{
+            \network & \size & \parameter \\} \\\hline
     \end{tabular}
+
     \caption{Neural Networks}
     \label{tbl:nerual_networks}
 \end{table}
