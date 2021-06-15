@@ -107,7 +107,6 @@ Models are trained using the provided training dataset over ten epochs, which de
 At that point training accuracy was at 100\% and the loss value fluctuated around the training sessions minimum.
 
 A total of ten training iterations for each network will be used as a pool to pick the best-performing model.
-
 Trained models are not volatile, so using the best case for each is the fairest approach to ensure every network has the best chances.
 
 Further experiments are conducted in the second phase, where the best-case models for each network predict whether a fingerprint presentation is bona fide or an artificially constructed fingerprint replica.
@@ -121,7 +120,6 @@ Since the activation function producing the scores is sigmoid, the prediction co
 
 Various aggregates will show possible correlations in prediction accuracy between the used material in case of a presentation attack or otherwise prediction differences in sex and age of the test subject.
 Additionally, the prediction latency for each network will be discussed and brought into context with the networks' size and complexity.
-
 
 All experiments are performed on a capable workstation with an 8/16 Core CPU, 16Gb RAM and discrete graphics.
 TensorFlow reports a compute capability of $6.1$.

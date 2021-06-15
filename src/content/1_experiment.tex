@@ -42,8 +42,6 @@ Figure \ref{fig:liquid_training_times} visualizes the relations between the aver
 NasNetLarges training time increased tenfold and it takes almost 40 minutes on average.
 
 
-\input{fig/liquid_validation_accuracies}
-
 
 The increased time spent for a more thorough training phase was worth it as almost all networks now break the 90\% validation accuracy barrier.
 InceptionResnetV2 delivers a respectable top accuracy after the disappointing result in the last section.
@@ -55,8 +53,6 @@ InceptionResnetV2 delivers a respectable top accuracy after the disappointing re
 Table \ref{tbl:training_diff} shows the relative gain in validation accuracy of frozen versus freely trained networks.
 Many of the smaller networks do not gain much, but on the other hand, InceptionResnetV2 and Xception are now much more competitive.
 Xceptions best validation accuracy is comparabale with some of the algorithms handed in during the LivDet2017 competition in regards to the dataset this experiment uses. \cite{LIVDET}
-
-\hfill
 
 \subsection{Phase 2 - Prediction Analysis}
 Serialized models are loaded and the testing dataset will be interpreted once again while capturing confidence values for further analysis.
@@ -75,18 +71,17 @@ Xception on the other hand is better suited for system with a near zero false-ne
 In the following subsections, each network will be inspected individually by evaluating the performance implicitly assuming a bona fide / presentation attack threshold of 0.5.
 This allows the performance to be differentiated in terms of certain materials while staying true to the standards given by LivDet2017 \cite{LIVDET}.
 
-
-\newpage
 \subsubsection{EfficientNet B0}
 Even before unfreezing all layers EfficientNetB0 was providing a usable PAD detection accuracy.
 Only a small increase in accuracy could be gained by liquid training.
 Interestingly, the correct non-match rate increased by almost 6\% while the correct match rate sank slightly.
 
-Prediction latencies are consistent, but the few outliers make the average time quite a lot higher than the median latency as seen in Table \ref{tbl:efficientnet_latencies}.
+Prediction latencies are consistent, but the few outliers make the average time quite a lot higher than the median latency as seen in Table \ref{tbl:EfficientNetB0_latencies}.
 
 \predictiontables{EfficientNetB0}
 
 
+\vspace{-1cm}
 \subsubsection{Inception Resnet V2}
 A surprising increase in prediction accuracy of almost 30\% was observed for InceptionResnetV2.
 The detection scores for all materials benefitted from the liquid training.
@@ -97,7 +92,7 @@ An average latency of 60ms is slow compared to the other networks.
 
 \predictiontables{InceptionResNetV2}
 
-
+\vspace{-1cm}
 \subsubsection{MobileNet}
 Not a lot improved for MobileNet by unfreezing the layers and in case of Gelatine some accuracy was lost.
 Bona fide fingerprints were correctly detected with an accuracy of 91.7\% and 94.4\%, while attack presentations were detected correctly with 87.9 and 89.0\%.
@@ -108,6 +103,7 @@ MobileNet was the fastest network in this experiment to deliver a prediction res
 \predictiontables{MobileNet}
 
 
+\vspace{-1cm}
 \subsubsection{Nasnet Large}
 Liquid Ecoflex samples were correctly classified most of the time with a high average rate of 99.7\% after the unfrozen training.
 The high attack presentation detection is unfortunately paired with a low correct match rate of only 80\% after unfrozen training, which is the lowest in the entire experiment.
@@ -117,6 +113,7 @@ With an average of almost 73ms NasNetLarge has the highest prediction latency.
 \predictiontables{NASNetLarge}
 
 
+\vspace{-1cm}
 \subsubsection{Resnet V2}
 Liquid Ecoflex samples were again correctly classified most of the time with a similar rate of 99.1\% after liquid training.
 BPCER and APCER are more balanced and result in an overall better accuracy in comparison to NasNetLarge.
@@ -125,16 +122,18 @@ The average prediction latency is half of NasNetLarges.
 \predictiontables{ResNet50V2}
 
 
+\vspace{-1cm}
 \subsubsection{VGG16}
 The liquid training resulted in a drastic decrease of bona fide fingerpint recognition and compared to that only a minor increase in correct non-match rate was gained.
 VGG16 is the only network that lost accuracy after liquid training.
 
 \predictiontables{VGG16}
 
-
+\vfill
+\vspace{-1cm}
 \subsubsection{Xception}
-The best performer in the test has a correct non-match rate of 97.5\% and returns a prediction result in under 36ms, which is quite fast in comparison to the other networks.
-Presentation attacks were able to be detected precisely with a max delta of under 1\%.
+The best performer in the test has a correct non-match rate of 97.5\% and returns a prediction result in under 36ms.
+Presentation attacks were able to be detected precisely with a max delta of under 2\%.
 
 \predictiontables{Xception}
 
